@@ -9,8 +9,6 @@
 #define is_punc(lst, c) (lst && typeof_tl(lst) == PUNC_T && valof_tl(lst) == c)
 #define is_endl(lst) (!lst || typeof_tl(lst) == ENDL_T)
 
-#define SWAP(a,b) {int temp = a; a = b; b = temp;}
-
 enum {FALSE, TRUE};
 
 int is_label(TokList lst);

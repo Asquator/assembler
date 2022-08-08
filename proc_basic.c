@@ -8,6 +8,7 @@
 #include "symbol.h"
 #include "proc_p.h"
 
+static int is_correct_label(TokList lst);
 static int is_mem_direc(TokList lst);
 
 static void proc_oper_word(TokList lst);
@@ -35,10 +36,9 @@ void proc_basic(){
 		/*if the sentence starts with a label definition*/
 		if(is_label(tn_ptr)){
 			label = startof_tl(tn_ptr);
-			if(find_symbol(label)){	/*symbol already exists*/
-				fmterr("redefenition of symbol %s", label);
+			if(!is_correct_label(tn_ptr))
 				continue;
-			 }
+
 			symdef = TRUE;
 			tn_ptr = tn_ptr->next->next; /*skipping the name and the colon tokens*/
 		}
@@ -71,6 +71,20 @@ void proc_basic(){
 		else
 			tokerr(&tn_ptr->tok, "invalid entry token, neither a directive nor label nor operation");
 	}
+}
+
+static int is_correct_label(TokList lst){
+	char *name = startof_tl(lst);
+	if(find_symbol(name)){	/*symbol already exists*/
+		fmterr("redefenition of symbol %s", name);
+		return FALSE;
+	 }
+
+	 if(is_keyword(name)){
+	 	fmterr("preserved word %s can't be used for label name", name);
+	 	return FALSE;
+	 }
+	 return TRUE;
 }
 
 /*proc_oper_word: processes the first word in operation sentence*/
