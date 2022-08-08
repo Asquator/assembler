@@ -1,6 +1,6 @@
 /*Contains constant tables and definitions*/
 
-#define CODE_DEFS
+#define CODE_DEFS	/*to not import variables as external*/
 
 #include <stdlib.h>
 #include "code_defs.h"
@@ -34,6 +34,7 @@ const Direc dirlist[] = {
 	{"extern", EXTERN_DIR}
 };
 
+/*other preserved words besides instructions and directives names*/
 const char *other_keywords[] = {"macro", "endmacro"};
 
 /*lengths of oplist and dirlist arrays*/
