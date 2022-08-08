@@ -280,5 +280,5 @@ void free_parser(){
 		free_toklist(*p++);
 	}
 
-	free(parsed_file);
+	if(parsed_file) free(parsed_file);
 }
