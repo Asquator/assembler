@@ -13,7 +13,8 @@ typedef struct Image{
 	byte *data;
 } Image;
 
-void clear_image(Image *img);
+void free_image(Image *img);
+void reset_image(Image *img);
 void write_seq_img(Image *img, void *src, size_t nblk);
 void img_seq_tof(Image *img, FILE *fp, size_t blkstart, size_t nblk);
 

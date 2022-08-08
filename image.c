@@ -26,12 +26,18 @@ void img_seq_tof(Image *img, FILE *fp, size_t blkstart, size_t nblk){
 	if(num != nblk) throw(WRT_FILE_ERR);
 }
 
-/*clear_image: frees the image array and resets the the counter to 0*/
-void clear_image(Image *img){
-	free(img->data);
-	img->data = NULL;
+/*free_image: frees the image array and resets the the counter to 0*/
+void free_image(Image *img){
+	if(img->data)
+		free(img->data);
+	reset_image(img);
+}
+
+/*reset_image: resets image to the default (empty) */
+void reset_image(Image *img){
 	img->cnt = 0;
 	img->size = 0;
+	img->data = NULL;
 }
 
 /*exp_image: expand the image storage by nbytes bytes*/

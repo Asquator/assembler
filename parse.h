@@ -16,4 +16,4 @@ void parse_file(char *fname);
 
 /*general parser control*/
 void restart_parser();
-void free_parser();
+void clear_parser();

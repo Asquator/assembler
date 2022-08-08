@@ -203,12 +203,15 @@ void parse_file(char *fname){
 	int linec = 0;
 	FILE *fpsrc;
 
+	clear_parser();
+
 	/*opening the target file*/
 	if((fpsrc = fopen_ext_mode(fname, ".am", "r")) == NULL)
 		throw(OPN_FILE_ERR);
 
+	exp_parsed_storage();	/*initial expansion of storage*/
 	while(fgets(line, MAXLINE, fpsrc) != NULL){
-		if(linec + 1 > alloc_linec)	/*no enough memory*/
+		if(linec + 2 > alloc_linec)	/*no enough memory, should be able to contain 2 extra lines (the line parsed and NULL terminator)*/
 			exp_parsed_storage();
 
 		/*parsing the next line and saving it in the storage*/
@@ -273,12 +276,18 @@ static void exp_parsed_storage(){
 	alloc_linec += ALLOC_LN;
 }
 
-/*free_parser: fully free the parsed file storage*/
-void free_parser(){
+/*clear_parser: free the parsed file storage and reset allocated lines counter*/
+void clear_parser(){
 	TokList *p = parsed_file;
+	alloc_linec = 0;
+
+	if(!parsed_file) /*nothing to free*/
+		return;
+
 	while(*p != NULL){	/*while there are parsed lines*/
 		free_toklist(*p++);
 	}
 
-	if(parsed_file) free(parsed_file);
+	free(parsed_file);
+	parsed_file = NULL;
 }

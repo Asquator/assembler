@@ -16,8 +16,8 @@ static Image code_img = {0, 0, NULL};
 
 /*encode_reset: clear code and data images*/
 void encode_reset(){
-	clear_image(&data_img);
-	clear_image(&code_img);
+	free_image(&data_img);
+	free_image(&code_img);
 }
 
 /*six functions below help access the data and code counters*/

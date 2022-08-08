@@ -45,7 +45,7 @@ Symbol *add_symbol(char *name, unsigned val, SymType type, SymSec sec){
 	if(type == EXT){
 		ext_cnt++;
 		newS->record.occur = malloc(sizeof(Image));
-		clear_image(newS->record.occur);
+		reset_image(newS->record.occur);
 	}
 
 	return &newS->record;
@@ -144,12 +144,12 @@ void reset_symtable(){
 	ent_cnt = ext_cnt = 0;
 }
 
-/*clear_sNode: clear a single symbpl node and free the the memory*/
+/*clear_sNode: clear a single symbol node and free the the memory*/
 static void clear_sNode(sNode_ptr node){
 	Symbol *sym_p = &node->record;
 	free(sym_p->name);
 	if(sym_p->type == EXT){
-		clear_image(sym_p->occur);
+		free_image(sym_p->occur);
 		free(sym_p->occur);
 	}
 	free(node);

@@ -22,6 +22,7 @@ static TokList proc_struct_addr(TokList lst);
 void proc_fill(){
 	TokList tn_ptr;
 	set_ic(0);
+	st_reset_linec();	/*reset error counter*/
 
 	while((tn_ptr = next_line_parsed()) != NULL){
 		st_inc_linec(); /*increase line counter in err status*/

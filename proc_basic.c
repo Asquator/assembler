@@ -23,6 +23,7 @@ void proc_basic(){
   	int symdef;	/*indicates symbol definition*/
 	TokList tn_ptr;
 
+	st_reset_linec();	/*reset error counter*/
 	set_ic(0); set_dc(0);	/*reset data and code counters*/
 	while((tn_ptr = next_line_parsed()) != NULL){
 		st_inc_linec(); /*increase line counter in err status*/
