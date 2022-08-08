@@ -1,0 +1,1 @@
+./assembler testers/tester_given testers/tester_errors testers/tester_mixed testers/tester_preproc testers/tester_ext_ent tester_INVALID

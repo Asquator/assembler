@@ -1,0 +1,13 @@
+;Tester for preprocessor errors
+
+;Invalid macro names
+
+
+
+
+
+	;code
+endmacro
+
+;endmacro directive missing
+
