@@ -126,7 +126,7 @@ static void proc_oper_word(TokList lst){
 
 	inc_ic(calc_arg_len(src, dest));	/*advancing the instruction counter by code length*/
 
-	/*ensuring the endline follows the instruction*/
+	/*ensuring an endline follows the instruction*/
 	lst = skip_blank_tok(lst);
 	if(!is_endl(lst))
 		tokerr(&lst->tok, "instruction ends with unexpected token");
@@ -195,7 +195,7 @@ static TokList proc_extern(TokList lst){
 		fmterr("redefenition of symbol %s", label);
 		return NULL;
 	}
-	add_symbol(label, 0, EXT, EXT_SEC);	/*saving the symbol marking it as external*/
+	add_symbol(label, 0, EXT, EXT_SEC);	/*saving the symbol and marking it as external*/
 	return lst->next;
 }
 
