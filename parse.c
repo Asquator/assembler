@@ -175,7 +175,7 @@ int parse_direc(char *line){
 	return -1;
 }
 
-/*parse_reg: parses register token, on success returns the register number (0-8), otherwise -1*/
+/*parse_reg: parses register token, on success returns the register number (0-7), otherwise -1*/
 int parse_reg(char *line){
 	return (line[0] == 'r' && '0' <= line[1] && line[1] < '8' && !isalnum(line[2])) ? line[1] - '0' : -1;
 }
