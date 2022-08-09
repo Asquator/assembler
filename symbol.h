@@ -9,7 +9,7 @@ typedef enum SymType {RELOC, EXT, ENT} SymType;
 typedef enum SymSec {DATA_SEC, CODE_SEC, EXT_SEC} SymSec;
 
 typedef struct Symbol{
-	char *name;	/*labrl*/
+	char *name;	/*label*/
 	unsigned val;	/*address value*/
 	Image *occur;	/*stores occurrences of the symbol in code, in current implementation used for external symbols only*/
 	unsigned type : 2;
