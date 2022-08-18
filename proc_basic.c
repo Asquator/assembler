@@ -281,8 +281,8 @@ TokList skip_blank_tok(TokList tn_ptr){
 TokList catch_comma(TokList lst){
 	lst = skip_blank_tok(lst);
 	if(!lst || !is_punc(lst, ',')){
-			tokerr(&lst->tok, "expected comma");
-			return NULL;
+		tokerr(&lst->tok, "expected comma");
+		return NULL;
 	}
 	return lst;
 }
