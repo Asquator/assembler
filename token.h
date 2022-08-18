@@ -11,13 +11,13 @@ typedef enum TokenType{
 	OPER_T, /*operation name token*/
 	DIR_T,	/*directive name token*/
 	NAME_T,	/*name token - sequence of characters where the first is a letter, and others are alphanumeric*/
-	STRLIT_T,	/*string literal - sequence of characters between " quotes*/
-	INTLIT_T,	/*integer literal with or without preceding sign*/
-	REG_T	/*register token, "r" followed by an integer 0-8*/
+	STRLIT_T,/*string literal - sequence of characters between " quotes*/
+	INTLIT_T,/*integer literal with or without preceding sign*/
+	REG_T	/*register token, "r" followed by an integer 0-7*/
 } TokenType;
 
 typedef struct Token{
-	TokenType type;
+	TokenType type;	/*type of the token*/
 	int val;	/*token value, depends on the type, see the specification below*/
 
 	char *start;	/*token string start*/
