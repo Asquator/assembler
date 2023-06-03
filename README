@@ -1,3 +1,7 @@
-Assembler for a specific architecture written for education purpose.
+Assembler for a specific architecture written for educational purposes.
+
+Tester assembly code is in the testers directory
+
+Output is in specific base-32 encoding
 
 Test run: ./test_input
